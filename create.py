@@ -1,7 +1,15 @@
-from main.models import * 
 import pandas as pd
 import unidecode
 import math
+
+import os
+import django
+from django.conf import settings
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'yarn.settings')
+django.setup()
+
+from main.models import * 
 
 path = 'goods/final.csv'
 

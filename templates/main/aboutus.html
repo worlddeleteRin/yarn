@@ -1,0 +1,69 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="aboutus_wrapper">
+
+    <div class="page__header__container">
+        <img class="page__header__container__img" 
+        src="{% static 'images/about_us_bg.jpg' %}" alt="">
+        <div class="page__header__container__bg">
+        </div>
+        <div class="page__header__container__title">
+            <span>
+                о нас
+            </span>
+        </div>
+    </div>
+
+    </div>
+
+
+    <div class="benefits_container">
+        <div class="benefits_container_info">
+            <div class="nice_title2 center benefits_container__title">
+            <span>
+                Наши преимущества
+            </span>
+            </div>
+            <div class="benefits_container_info_list">
+                <div class="benefits_container_info_item">
+                    <div class="benefits_container_info_item__title">
+                        <i class="fa fa-atom"></i>
+                        <span>
+                           Работает с фабриками-производителями
+                        </span>
+                    </div>
+                </div>
+                <div class="benefits_container_info_item">
+                    <div class="benefits_container_info_item__title">
+                        <i class="fa fa-atom"></i>
+                        <span>
+                        Являемся официальным и сертифицированным диллером
+                        </span>
+                    </div>
+                </div>
+                <div class="benefits_container_info_item">
+                    <div class="benefits_container_info_item__title">
+                        <i class="fa fa-atom"></i>
+                        <span>
+                        Продаем максимально качественную продукцию по 
+                        минимальной стоимости
+                        </span>
+                    </div>
+                </div>
+                <div class="benefits_container_info_item">
+                    <div class="benefits_container_info_item__title">
+                        <i class="fa fa-atom"></i>
+                        <span>
+                        Быстро отправляем товар удобной для вас доставкой
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

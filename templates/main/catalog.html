@@ -1,0 +1,43 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+
+<div class="main_wrapper1">
+    
+
+    <div class="desktop_menu_wrapper">
+    
+    {% include './blocks/desktop_menu_block.html' %}
+
+    <div class="main__content">
+
+
+    <div class="nice_title3 bold center"
+    style="padding: 10 0;">
+        <span>
+            Каталог товаров
+        </span>
+    </div>
+
+    <div class="products_list">
+        {% for category in categories %}
+            {% include './blocks/category_card.html' %}
+        {% endfor %}
+    </div>
+
+    </div>
+
+    </div>
+
+</div>
+
+
+<script>
+        var main_catalog = $(".dmenu__block__category__container_main")
+        $(main_catalog).toggleClass('active')
+        {% comment %} $(".dmenu__block__category__container-{{current_category.id}}").toggleClass('active') {% endcomment %}
+</script>
+
+{% endblock content %}

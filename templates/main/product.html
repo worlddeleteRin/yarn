@@ -1,0 +1,274 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="product__page">
+    
+    <div class="product__main__container">
+
+        <div class="product__main__container__img">
+            <img src="{{ product.imgsrc }}" alt=""
+            class="product__mainimage__item">
+        </div>
+        
+        <div class="product__main__container__second">
+                <div class="hints__block">
+                    {% if product.has_sale  %}
+                    <div class="sale__block__hint">
+                        <span>
+                            -{{ product.discount_perc }}%
+                        </span>
+                    </div>
+                    {% endif %}
+                    <div class="popular__block__hint">
+                        <span>
+                            Популярный
+                        </span>
+                    </div>
+                </div>
+                    <div class="product__page__name">
+                    <span>
+                        {{ product.name }}
+                    </span>
+                </div>
+                <div class="product__main__container__second__find">
+                    <span id="find_block"
+                    class="phone_call">
+                        Нашли дешевле?
+                    </span>
+                </div>
+                <div class="product__main__container__second__priceblock">
+                    {% if product.has_sale %}
+                    
+                    <span class="product__main__container__second__sale">
+                        {{ product.sale_price }} грн.
+                    </span>
+                    <span class="product__main__container__second__old">
+                        {{ product.price }} грн.
+                    </span>
+                    {% else %}
+                        <span class="product__main__container__second__price">
+                        {{ product.price }} грн.
+                    </span>
+                    {% endif %}
+                </div>
+                
+                <div class="product__economy">
+                {% if product.has_sale %}
+                    <span>
+                        Экономия 
+                        {{ product.discount_val }}
+                         грн.
+                    </span>
+                    {% endif %}
+                </div>
+                
+                <div class="product__sub__item">
+                    <div class="phone_call">
+                    <i class="fa fa-phone-alt"></i>
+                    <span id="notifprice_block">
+                        Перезвоните мне
+                    </span>
+                    </div>
+                </div>
+                <div class="product__main__container__second__addcart
+                product__not__in__cart">
+                    <span class="product__page__addcart product__addcart__button"
+                    id="product__addcart__button" value="{{ product.id }}">
+                        Добавить в корзину
+                    </span>
+                    {% comment %} <div class="product__page__favorite">
+                        <i class="far fa-heart"></i>
+                    </div> {% endcomment %}
+                </div>
+                <div class="product__main__container__second__addcart
+                product__in__cart">
+                    <div class="product__page__added">
+                        <div id="product_go_to_cart">
+                        <span class="product__page__added__first">
+                            В корзине 
+                            <span id="quantity_in_cart">
+                                1
+                            </span>
+                             шт.
+                            
+                        </span> <br>
+                        <span class="product__page__added__second"> 
+                            Перейти
+                        </span>
+                        </div>
+                    </div>
+                        <div class="product__page__added__more">
+                            <span id="add_quantity_button"
+                            value="{{ product.id }}">
+                                +1 шт.
+                            </span>
+                        </div>
+                    {% comment %} <div class="product__page__favorite">
+                        <i class="far fa-heart"></i>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+    </div>
+
+    <div class="product__description__block">
+        <div class="nice_title3 bold">
+            <span>
+            Описание
+            </span>
+        </div>
+        <div class="product__description__block__desc">
+            {{ product.description }}
+        </div>
+    </div>
+    <div class="product__page__features">
+        <div class="nice_title3 bold">
+            <span>
+            Характеристики
+            </span>
+        </div>
+        <div class="product__page__features__block">
+
+            {% for attritem in product.attributeitem.all  %}
+            
+            {% comment %} {% if attr.attributeitem_set.all|length > 0 %} {% endcomment %}
+            
+            
+            <div class="product__page__features__item">
+                <div class="product__page__features__item__first">
+                    <span>
+                        {{ attritem.attribute.name }}
+                    </span>
+                </div>
+                <div class="product__page__features__item__second">
+                        <span>
+                            {{ attritem.name }}
+                        </span> 
+                </div>
+            </div>
+
+            {% comment %} {% endif %} {% endcomment %}
+
+            {% endfor %}
+
+            
+            
+            
+        </div>
+
+        <div class="nice_title3 bold">
+            <span>
+            Похожие товары
+            </span>
+        </div>
+
+        <div class="swiper-container product_page_slider">
+            <div class="swiper-wrapper product_slider_wrapper">
+                {% for product in product.subcategory.product_set.all  %}
+                    <div class="swiper-slide product_slide_item">
+                    {% include './blocks/product_cart.html' %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+             <div class="swiper-button-prev swiper_button"></div>
+            <div class="swiper-button-next swiper_button"></div> 
+
+            <!-- If we need scrollbar -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+<script>
+    var product_id = "{{ product.id }}"
+    checkProductInCart(product_id)
+    $(document).ready(function() {
+        const swiper = new Swiper('.product_page_slider ', {
+    // Optional parameters
+    slidesPerView: 1,
+    spaceBetween: 5,
+    autoHeight: true,
+    breakpoints: {
+        580: {
+            slidesPerView: 2,
+        },
+        765: {
+            slidesPerView: 3,
+        },
+        1262: {
+            slidesPerView: 4,
+        },
+    },
+    direction: 'horizontal',
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    // scrollbar: {
+    //   el: '.swiper-scrollbar',
+    // },
+  });
+    })
+    $('body').addClass('white')
+    $('#product_go_to_cart').click(function() {
+        window.location = "{% url 'cart:index' %}"
+    })
+
+
+    function checkProductInCart(product_id) {
+    $.ajax({
+        url: "{% url 'cart:check_in_cart_ajax' %}",
+        data: {
+            'product_id': product_id
+        }, success: function(data) {
+            var in_cart = data['in_cart']
+            if (in_cart == 'yes') {
+                var quantity = data['quantity']
+                console.log('in cart')
+                showCartButton(1)
+                $('#quantity_in_cart').html(quantity)
+            } else {
+                console.log('not in cart')
+                showCartButton(0)
+            }
+        }
+    })
+} 
+function showCartButton(button_id) {
+    $(".product__not__in__cart").removeClass("show")
+    $(".product__in__cart").removeClass("hide")
+    if (button_id == 0) {
+        $(".product__not__in__cart").addClass("show")
+        $(".product__in__cart").addClass("hide")
+    } else {
+        $(".product__not__in__cart").addClass("hide")
+        $(".product__in__cart").addClass("show")
+    }
+}
+
+
+</script>
+
+{% endblock content %}

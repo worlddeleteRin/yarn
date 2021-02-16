@@ -1,0 +1,51 @@
+@import './vars.scss';
+
+
+// services here
+
+
+.adv__wrapper {
+    //    background-color: $nice-black2;
+        padding: 30 0;
+        position: relative;
+    }
+    
+    .adv__main {
+        padding: 40 0; 
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .adv__main__item {
+        height: 50px;
+        max-width: 400px;
+        min-width: 300px;
+        width: 300px;
+        margin: 20;
+        padding: 20 0;
+        text-align: left;
+        position: relative;
+    
+        &__title {
+            padding: 0 10;
+            font-size: calc(15px +1vw);
+            font-family: 'main_semi_bold';
+        }
+        &__counter {
+            user-select: none;
+            position: absolute;
+            top: -20;
+            left: -25;
+            font-size: 95px;
+            color: rgba(189, 216, 244, 0.354);
+        }
+    
+        @media (max-width: 740px) {
+            width: 400px;
+        }
+    }
+    
+    

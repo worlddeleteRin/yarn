@@ -1,0 +1,35 @@
+<div class="medium center pd5">
+        Товаров найдено: 
+        <span class="search_query_value_count semibold">
+            {{ products_count }}
+        </span> 
+    </div>
+<div class="search_results">
+    {% for product in search_products %}
+    <a href="{% url 'main:product' product.id %}"
+    class="search_item nolink pointer">
+        <div class="search_img">
+            <img 
+            src="{{ product.imgsrc }}">
+        </div>
+        <div class="search_category">
+            {{ product.category.name }}
+        </div>
+        <div class="search_name">
+            {{ product.name }}
+        </div>
+        <div class="search_price">
+            {% if product.has_sale %}
+            <span class="red ">
+            {{ product.sale_price}} грн.
+            </span>
+            <span class="cross ">
+                {{ product.price }} грн.
+            </span>
+            {% else %}
+            {{ product.price }} грн.
+            {% endif %}
+        </div>
+    </a>
+    {% endfor %}
+</div>

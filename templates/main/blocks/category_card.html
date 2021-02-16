@@ -1,0 +1,15 @@
+{% load static %}
+<a href="{% url 'main:category' category.id %}"
+class="category_card pointer">
+    <div class="category_card_name">
+        {{ category.name }}
+    </div>
+    <div class="category_card_img">
+        <img src="{{ category.imgsrc }}" alt="">
+    </div>
+    <div class="category_card_count">
+        <span>
+            {{ category.product_set.count }}
+        </span>
+    </div>
+</a>

@@ -1,0 +1,304 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Клубок - Интернет-магазин пряжи
+    </title>
+</head>
+<body>
+
+{% include './includes_css.html' %}
+{% include './includes_js.html' %}
+
+
+
+{% block header %}
+    {% include './blocks/header.html' %}
+{% endblock header %}
+
+
+{% block content %}
+{% endblock content %}
+
+{% include './blocks/footer.html' %}
+
+    {% include './blocks/popup_cotact.html' %}
+
+    {% include './blocks/popup_complete.html' %}
+
+
+</body>
+
+<script>
+
+getItemsInCart()
+get_set_CartInfo()
+
+$(document).on('click', function(event) {
+    if ($('.search_container').hasClass('show')) {
+        if (
+        $(event.target).closest('.search_container').length === 0 &&
+        $(event.target).closest('.search_input_main').length === 0
+        ) {
+            $('.search_container').removeClass('show')
+        }
+    }
+})
+
+$(".product__addcart__button").click(function() {
+    var product_id = $(this).attr('value')
+    addToCart(product_id) 
+})
+$('#add_quantity_button').click(function() {
+    var product_id = $(this).attr("value")
+    addToCart(product_id)
+})
+function addToCart(product_id) {
+    $(".product__addcart__button-"+product_id).html(
+        "<i class='gg-loadbar margin-auto'></i>"
+    )
+    $.ajax({
+        url: "{% url 'cart:add_item_ajax' %}",
+        data: {
+            'product_id': product_id,
+        }, success: function(data) {
+            checkProductInCart(product_id)
+            getItemsInCart()
+            get_set_CartInfo()
+        }
+    })
+}
+function checkProductInCart(product_id) {
+    console.log('start checking in cart')
+    $.ajax({
+        url: "{% url 'cart:check_in_cart_ajax' %}",
+        data: {
+            'product_id': product_id
+        }, success: function(data) {
+            var in_cart = data['in_cart']
+            if (in_cart == 'yes') {
+                var quantity = data['quantity']
+                showCartButton(1)
+                $('#quantity_in_cart').html(quantity)
+            } else {
+                showCartButton(0)
+            }
+        }
+    })
+} 
+function showCartButton(button_id) {
+    $(".product__not__in__cart").removeClass("show")
+    $(".product__in__cart").removeClass("hide")
+    if (button_id == 0) {
+        $(".product__not__in__cart").addClass("show")
+        $(".product__in__cart").addClass("hide")
+    } else {
+        $(".product__not__in__cart").addClass("hide")
+        $(".product__in__cart").addClass("show")
+    }
+}
+function getItemsInCart() {
+    var s
+    console.log('start getting items in cart')
+    $.ajax({
+        url: "{% url 'cart:get_items_in_cart_ajax' %}",
+        data: {
+
+        }, success: function(data) {
+            var items = data['items_in_cart']
+            for(i = 0; i < items.length; i++) {
+                var id = items[i]['pr_id']
+                console.log(id)
+                var element = $(".product__addcart__button-"+id)
+                $(element).addClass("is_in_cart")
+                $(element).html(
+                    "<i class='fa fa-check'></i> В корзине"
+                )
+                // console.log('el: ', $(element))
+            }
+        }
+    })
+}
+function get_set_CartInfo() {
+    $.ajax({
+        url: "{% url 'cart:update_cart_info_ajax' %}",
+        data: {
+
+        }, success: function(data) {
+            var cart_total = data['cart_total']
+            var cart_quantity = data['cart_quantity']
+            $(".shopping_counter_value").html(cart_quantity)
+            // $(".shopping_summary_value").html(cart_total)
+        }
+    })
+}
+function updateCartTotal() {
+  $.ajax({
+    url: "{% url 'cart:update_cart_total_ajax' %}",
+    data: {
+      'someinfo': 'someinfo',
+    },
+    success: function(data) {
+      var total = data['cart_total']
+        $(".count__label").html(total)
+    }
+  })
+}
+  
+function sendCall(call_type) {
+    console.log('button is clicked')
+    console.log(call_type)
+    if (call_type == 'project') {
+        var call_name = $("input[name='call_name']").val()
+        var call_phone = $("input[name='call_phone']").val()
+        var call_mail = $("input[name='call_mail']").val()
+        var call_about = $("input[name='call_about']").val()
+        $.ajax({
+            url: 'google.com',
+            data: {
+                'call_type': call_type,
+                'call_name': call_name,
+                'call_phone': call_phone,
+                'call_mail': call_mail,
+                'call_about': call_about,
+            }, success: function(data) {
+                openThankPopup()
+            }
+        });
+    }
+    if (call_type == 'phone_only') {
+        var call_phone = $("input[name='call_phone2']").val()
+        $.ajax({
+            url: 'google.com',
+            data: {
+                'call_type': call_type,
+                'call_phone': call_phone,
+            }, success: function(data) {
+                openThankPopup()
+            }
+        });
+    }
+    if (call_type == 'popup_phone') {
+        var call_phone = $("input[name='call_phone3']").val()
+        $.ajax({
+            url: 'google.com',
+            data: {
+                'call_type': 'phone_only',
+                'call_phone': call_phone,
+            }, success: function(data) {
+                closeContactPopup()
+                openThankPopup()
+            }
+        });
+    }
+}
+
+function checkForm(call_type) {
+    var passed = true
+    if (call_type == 'project') {
+        var call_name = $("input[name = 'call_name']")
+        var call_phone = $("input[name = 'call_phone']")
+        if ($(call_name).val().length < 1) {
+            $(call_name).addClass('alert')
+            passed = false
+        } else {
+            $(call_name).removeClass('alert')
+        }
+        if ($(call_phone).val().length < 1) {
+            $(call_phone).addClass('alert')
+            passed = false
+        } else {
+            $(call_phone).removeClass('alert')
+        }
+        return passed
+    }
+    if (call_type == 'phone_only') {
+        var call_phone = $("input[name = 'call_phone2']")
+        if ($(call_phone).val().length < 1) {
+            $(call_phone).addClass('alert')
+            passed = false
+        } else {
+            $(call_phone).removeClass('alert')
+        }
+        return passed
+    }
+    if (call_type == 'popup_phone') {
+        var call_phone = $("input[name = 'call_phone3']")
+        if ($(call_phone).val().length < 1) {
+            $(call_phone).addClass('alert')
+            passed = false
+        } else {
+            $(call_phone).removeClass('alert')
+        }
+        return passed
+    }
+}
+function openThankPopup() { 
+    $("#thank_popup").addClass("show")
+    $(".contacts_popup_bg").addClass("show")
+}
+function closeThankPopup() { 
+    $("#thank_popup").removeClass("show")
+    $(".contacts_popup_bg").removeClass("show")
+}
+
+$('#send_call_phone').click(function() {
+    var call_type = 'project'
+    var passed = checkForm(call_type)
+    if (passed == true) {
+        sendCall(call_type)
+    }
+})
+
+$('#send_call_phone2').click(function() {
+    var call_type = 'phone_only'
+    var passed = checkForm(call_type)
+    if (passed == true) {
+        sendCall(call_type)
+    }
+})
+$('#send_call_phone3').click(function() {
+    var call_type = 'popup_phone'
+    var passed = checkForm(call_type)
+    if (passed == true) {
+        sendCall(call_type)
+    }
+})
+
+$('#thank_popup_close').click(function() {
+    closeThankPopup()
+})
+
+$(".main__header__phone__callme").click(function() {
+    openContactPopup()
+})
+$(".popup_contact_close").click(function() {
+    closeContactPopup()
+})
+$(".popup_contact_bg").click(function() {
+    closeContactPopup()
+})
+
+$(".sale__container__button").click(function() {
+    openContactPopup()
+})
+
+$(".phone_call").click(function() {
+    openContactPopup()
+})
+
+function openContactPopup() {
+    $(".popup_contact").addClass("show")
+    $(".popup_contact_bg").addClass("show")
+}
+function closeContactPopup() {
+    $(".popup_contact").removeClass("show")
+    $(".popup_contact_bg").removeClass("show")
+}
+
+
+</script>
+
+</html>

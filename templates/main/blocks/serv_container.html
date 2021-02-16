@@ -1,0 +1,87 @@
+{% load static %}
+<div class="serv_container_wrapper">
+    <div class="serv_container">
+        <div class="serv_container_item">
+            <img class="serv_container_item__image"
+            src="{% static 'images/webdev.jpg' %}" alt="">
+            <div class="serv_container_item__bg">
+            </div>
+            <div class="serv_container_item__info">
+                <div class="serv_container_item__info__title">
+                    <span class="">
+                    Веб-разработка
+                    </span>
+                </div>
+                <div class="serv_container_item__info__desc">
+                    Разработка сайтов любой сложности: от простого лендинга до крупного сайта-портала. <br>
+                    Комплексное продвижение Вашего бизнеса за счет SEO-оптимизации и правильной контекстной рекламы.
+
+                    <div class="serv_container_item__info__button nice_button">
+                        <a href="{% url 'main:web_dev' %}">
+                        подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="serv_container_item">
+        <img class="serv_container_item__image"
+            src="{% static 'images/designdev.jpg' %}" alt="">
+        <div class="serv_container_item__bg">
+        </div>
+            <div class="serv_container_item__info">
+                <div class="serv_container_item__info__title">
+                    <span>
+                    Дизайн
+                    </span>
+                </div>
+                <div class="serv_container_item__info__desc">
+                    Разработка эксклюзивного логотипа, создание фирменного стиля, редизайн сайта.
+                    <div class="serv_container_item__info__button nice_button">
+                        <a href="{% url 'main:design' %}">
+                        подробнее
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="serv_container_item">
+        <img class="serv_container_item__image"
+            src="{% static 'images/marketingdev.svg' %}" alt="">
+        <div class="serv_container_item__bg">
+        </div>
+            <div class="serv_container_item__info">
+                <div class="serv_container_item__info__title">
+                    <span>
+                    Реклама
+                    </span>
+                </div>
+                <div class="serv_container_item__info__desc">
+                    Настройка и ведение рекламных компаний Yandex, Google, Vk, Instagram, Facebook.
+                    <div class="serv_container_item__info__button nice_button">
+                        <a href="{% url 'main:adv' %}">
+                        подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".serv_container_item").hover(function() {
+        var colors = [
+            'red', 'blue', 'green', 'yellow', 'orange', 'violet'
+        ]
+        var random_color = colors[Math.floor(Math.random()*colors.length)];
+        $(this).addClass("hover")
+        var item = $(this).find(".serv_container_item__info__title span").addClass('underline ' + random_color)
+        console.log(item)
+    }, function() {
+        $(this).removeClass("hover")
+        var item = $(this).find(".serv_container_item__info__title span").attr('class', '')
+    })
+</script>

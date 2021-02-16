@@ -1,0 +1,101 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+    <div class="main_wrapper1">
+    
+
+    <div class="desktop_menu_wrapper">
+    
+
+    {% include './blocks/desktop_menu_block.html' %}
+
+    <div class="main__content">
+
+    <div class="nice_title3 bold flex">
+        <span>
+            Наши Контакты
+        </span>
+        {% comment %} <a class="nice_link green light"
+        href="{% url 'main:catalog' %}">
+            В каталог >
+        </a> {% endcomment %}
+    </div>
+
+    <div class="contact__block__item">
+        <div class="nice_title3 light bold p10">
+            <span>
+                Назание:
+            </span>
+        </div>
+        <div>
+            Клубочок - Интернет-магазин пряжи
+        </div>
+    </div>
+    <div class="contact__block__item">
+        <div class="nice_title3 light bold p10">
+            <span>
+                Адрес:
+            </span>
+        </div>
+        <div>
+            г. Херсон, ул. Суворова, 23
+        </div>
+    </div>
+    <div class="contact__block__item">
+        <div class="nice_title3 light bold p10">
+            <span>
+                Телефон:
+            </span>
+        </div>
+        <div>
+            +38095xxxxxxx
+        </div>
+        <div>
+            +38095xxxxxxx
+        </div>
+    </div>
+    <div class="contact__block__item">
+        <div class="nice_title3 light bold p10">
+            <span>
+                График работы:
+            </span>
+        </div>
+        <div>Понедельник: 9:30-17:30</div>
+        <div>Вторник: 9:30-17:30</div>
+        <div>Среда: 9:30-17:30</div>
+        <div>Четверг: 9:30-17:30</div>
+        <div>Пятница: 9:30-17:30</div>
+        <div>Суббота: 9:30-15:00</div>
+        <div>Воскресенье: закрыто</div>
+    </div>
+
+    <div class="contact_map">
+    <div class="nice_title3 light bold p15">
+            <span>
+                Мы на карте:
+            </span>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2739.7810828363217!2d32.609344815511975!3d46.63108687913209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c41acbc6f80d45%3A0x334fb4caa382662e!2z0YPQuy4g0KHRg9Cy0L7RgNC-0LLQsCwgMjMsINCl0LXRgNGB0L7QvSwg0KXQtdGA0YHQvtC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsINCj0LrRgNCw0LjQvdCwLCA3MzAwOQ!5e0!3m2!1sru!2s!4v1612792517564!5m2!1sru!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    
+{% comment %} end of main content {% endcomment %}
+    </div>
+
+    </div>
+
+    </div>
+    {% comment %} {% include './blocks/intro_container.html' %} {% endcomment %}
+    
+    {% comment %} {% include './blocks/services.html' %} {% endcomment %}
+
+
+    {% comment %} <div id="services_anchor"></div> {% endcomment %}
+    {% comment %} {% include './blocks/serv_container.html' %} {% endcomment %}
+
+    {% comment %} {% include './blocks/contacts_container.html' %} {% endcomment %}
+
+    {% comment %} {% include './blocks/request_call.html' %} {% endcomment %}
+
+{% endblock content %}

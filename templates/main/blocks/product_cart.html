@@ -1,0 +1,57 @@
+{% load static %}
+<div class="product_card">
+    <a class="product_image"
+    style="display:block;"
+    href="{% url 'main:product' product.id %}">
+        <img src="{{ product.imgsrc }}" alt="">
+        {% if product.has_sale %}
+            <div class="sale_mark_text">
+                <span>
+                    Акция
+                </span>
+            </div>
+        {% endif %}
+    </a>
+    <div class="product_info">
+        <a href="{% url 'main:product' product.id %}"
+        class="product_name">
+            {{ product.name }}
+        </a>
+
+        {% if product.has_sale %}
+            <div class="product_price">
+                <span class="old">
+                    {{ product.price }} грн.
+                </span>
+                <span class="sale">
+                    {{ product.sale_price }} грн.
+                </span>
+            </div>
+        {% else %}
+            <div class="product_price">
+                {{ product.price }} грн.
+            </div>
+        {% endif %}
+
+        <div class="product_buy">
+            
+            <span class="pointer product__addcart__button
+            product__addcart__button-{{product.id}}"
+            id="product__addcart__button-{{product.id}}"
+            value="{{ product.id }}">
+            {% comment %} <i class="fa fa-shopping-basket"></i> {% endcomment %}
+            Купить
+            </span>
+            
+        </div>
+    </div>
+    {% if product.has_sale %}
+    <div class="sale_mark">
+        <span>
+            -
+            {{ product.discount_perc }}
+            %
+        </span>
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,176 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+
+    
+<div class="case-main dark case-main-top">
+    <div class="case-main-text">
+        <h3 class="case-main__title case-f aos-init aos-animate" data-aos="fade-down">
+            {% block intro__container__title %}
+              Веб-разработка
+            {% endblock intro__container__title %}
+        </h3>
+        <div class="case-main__subtitle">
+            Сайт-лендинг <br>
+            Каталог <br>
+            Интернет-магазин 
+        </div>
+        <p class="case-main__desc aos-init aos-animate" data-aos="fade-down" data-aos-delay="150">
+        </p>
+    </div>
+    <div class="case-main-img-wrapper">
+        <noscript><img data-aos-anchor=".case-main__title" data-aos-duration="700" data-aos="fade-left" data-aos-delay="250" 
+            src="{% static 'images/web_dev_img.png' %}" alt=""></noscript>
+        <img class="aos-init lazyloaded aos-animate" data-aos-anchor=".case-main__title" data-aos-duration="700" data-aos="fade-left" data-aos-delay="250" src="{% static 'images/web_dev_img.png' %}" data-src="{% static 'images/web_dev_img.png' %}" alt="">
+    </div>
+</div>
+
+{% comment %} sale container  {% endcomment %}
+    <div class="sale__container">
+        <img class="sale__container__img"
+        src="{% static 'images/sale_container_bg.png' %}" alt="">
+        <div class="sale__container__bg">
+        </div>
+        <div class="sale__container__title">
+            Дизайн в подарок при заказе сайта
+        </div>
+        <div class="nice_button sale__container__button">
+            <span>
+                Узнать больше
+            </span>
+        </div>
+    </div>
+{% comment %}  end sale container {% endcomment %}
+
+    {% comment %} benefits container {% endcomment %}
+    <div class="benefits__wrapper">
+        <div class="nice_title2 center">
+            <span>
+                Выгоды создания интернет-магазина
+            </span>
+        </div>
+        <div class="benefits">
+            <div class="benefits__image">
+                <img src="{% static 'images/benefits_im_image.png' %}" alt="">
+            </div>
+            <div class="benefits__items">
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Получайте продукт с понятной и удобной CMS для управления сайтом
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Продавайте свои товары и услуги в Интернете
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Полностью автоматизируйте бизнес
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Получите возможность использования новых маркетинговых инструментов
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} end benefits container {% endcomment %}
+
+    {% comment %} benefits container {% endcomment %}
+    <div class="benefits__wrapper">
+        <div class="nice_title2 center">
+            <span>
+                Выгоды создания Landing Page
+            </span>
+        </div>
+        <div class="benefits">
+            <div class="benefits__image">
+                <img src="{% static 'images/benefits_land.png' %}" alt="">
+            </div>
+            <div class="benefits__items">
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Привлечение внимания к продукту. При переходе на лендинг посетитель сразу видит то, что ему предлагается. Но этого не всегда достаточно. Поэтому лендинг втягивает пользователя узнать о товаре больше за счет интересных заголовков, описаний, и сопровождающих материалов, плавно подводя к совершению нужного действия.
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Улучшенный поведенческий фактор. Лендинг способствует увеличению времени нахождения посетителей на сайте и стимулирует к взаимодействию со страницей.
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Эмоциональный отклик. Иначе – впечатления, которые формируются после увиденного посетителями. При использовании лендинга этот показатель всегда выше, потому что формат позволяет использовать дизайнерам больше графики, позволяет реализовать им больше профессиональных решений для лучшего визуального восприятия сайта.
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Управление продажами. При анализе действий пользователей на сайте, можно понять на что они обращают внимание, а на что нет. Куда кликают, а куда нет. На основании этого можно пробовать видоизменять блоки и содержимое, добиваясь большего количества заказов, и лучшего поведенческого отклика пользователей. Ведь от этого также зависят продажи.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} end benefits container {% endcomment %}
+
+    {% comment %} benefits container {% endcomment %}
+    <div class="benefits__wrapper">
+        <div class="nice_title2 center">
+            <span>
+                Выгоды создания многостраничного сайта
+            </span>
+        </div>
+        <div class="benefits">
+            <div class="benefits__image">
+                <img src="{% static 'images/benefits_mng.png' %}" alt="">
+            </div>
+            <div class="benefits__items">
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Получите возможность для размещения основной информации о вас, вашей компании и бренда
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Редактируйте и наполняйте сайт на свое усмотрение при помощи удобной CMS системе
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Наполните собственное портфолио своими самыми удачными проектами на многостраничном сайте
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Познакомьте потенциального клиента ближе с вашей компанией
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} end benefits container {% endcomment %}
+
+    {% include './blocks/request_call.html' %}
+
+    {% include './blocks/serv_container.html' %}
+
+    {% include './blocks/contacts_container.html' %}
+    
+
+{% endblock content %}

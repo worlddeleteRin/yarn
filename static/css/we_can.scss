@@ -1,0 +1,39 @@
+@import './vars.scss';
+// we can block
+
+.we_can_wrapper {
+     background-color: white;
+     padding-top: calc(30px + 6vw);
+     padding-bottom: calc(10px + 5vw);
+ }
+
+.we_can_container {
+    margin-top: calc(18px + 3vw);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+ }
+
+.we_can_item {
+    max-width: 300px;
+    margin: 15 10;
+    display: flex;
+    &__icon {
+        font-size: 17px;
+        color: $main-color;
+        padding: 10;
+        margin: 0 20;
+    }
+    &__text {
+        font-family: 'main_semi_bold';
+        font-size: calc(12px + 0.4vw);
+    }
+}
+
+@media (max-width: 661px) {
+    .we_can_item {
+        max-width: 400px;
+    }
+}

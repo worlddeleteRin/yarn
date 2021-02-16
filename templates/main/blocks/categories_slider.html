@@ -1,0 +1,66 @@
+
+<div class="swiper-container pointer categories_slider">
+    <div class="swiper-wrapper">
+        {% for category in categories %}
+            <div class="swiper-slide categories_slider_item">
+            {% include './category_card.html' %}
+            </div>
+            <div class="swiper-slide categories_slider_item">
+            {% include './category_card.html' %}
+            </div>
+            <div class="swiper-slide categories_slider_item">
+            {% include './category_card.html' %}
+            </div>
+            <div class="swiper-slide categories_slider_item">
+            {% include './category_card.html' %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev swiper_button"></div>
+    <div class="swiper-button-next swiper_button"></div> 
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        const swiper = new Swiper('.categories_slider ', {
+    // Optional parameters
+    slidesPerView: 1,
+    spaceBetween: 10,
+    autoHeight: true,
+    breakpoints: {
+        580: {
+            slidesPerView: 2,
+        },
+        765: {
+            slidesPerView: 3,
+        },
+        1262: {
+            slidesPerView: 4,
+        },
+    },
+    direction: 'horizontal',
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    // scrollbar: {
+    //   el: '.swiper-scrollbar',
+    // },
+  });
+    })
+</script>

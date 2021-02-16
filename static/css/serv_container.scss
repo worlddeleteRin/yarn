@@ -1,0 +1,99 @@
+@import './vars.scss';
+// serv_container 
+
+.serv_container {
+    // border: 2px solid red;
+    display: flex;
+}
+.serv_container_item {
+    position: relative;
+    overflow: hidden;
+    width: 33%;
+    height: 600px;
+    transition: width 0.2s ease-out;
+}
+.serv_container_item.hover { 
+    @media (min-width: 991px) {
+        width: 50%;
+        .serv_container_item__info__desc {
+            visibility: visible;
+            left: 20;
+        }
+        .serv_container_item__image {
+            transform: scale(1.2);
+        }
+        .serv_container_item__bg {
+            opacity: 0.92;
+        }
+    }
+}
+.serv_container_item__bg {
+    opacity: 0;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.2s;
+}
+.serv_container_item__image {
+    object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.4s;
+    z-index: 0;
+}
+
+.serv_container_item__info {
+    padding: 40 30;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    // overflow: hidden;
+    &__title {
+        font-size: calc(15px + 1.4vw);
+        font-family: 'main_ebold';
+    }
+    &__desc {
+        margin-top: 30px;
+        // visibility: hidden;
+        position: absolute;
+        left: -900px;
+        font-size: calc(10px + 0.4vw);
+        font-family: 'main_regular';
+        padding: 40 0;
+        // max-width: 300px;
+        width: 80%;
+        overflow: hidden;
+        transition: left 0.2s;
+    }
+    &__button {
+        padding-top: 90px;
+    }
+}
+
+@media (max-width: 991px) {
+    .serv_container {
+        display: block;
+    }
+    .serv_container_item {
+        height: calc(300px + 2vw);
+        width: 100%;
+    }
+    .serv_container_item__info__desc {
+        visibility: visible; 
+        left: 20;
+    }
+    .serv_container_item__bg {
+        opacity: 0.92;
+    }
+    .serv_container_item__info__button {
+        padding-top: 60;
+    }
+}

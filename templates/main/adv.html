@@ -1,0 +1,95 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+
+    
+<div class="case-main dark case-main-top">
+    <div class="case-main-text design-header-title">
+        <h3 class="case-main__title case-f aos-init aos-animate" data-aos="fade-down">
+            {% block intro__container__title %}
+                Реклама вашего бизнеса
+            {% endblock intro__container__title %}
+        </h3>
+        <div class="case-main__subtitle">
+            Google, Yandex <br>
+            Facebook, VK<br>
+        </div>
+        <p class="case-main__desc aos-init aos-animate" data-aos="fade-down" data-aos-delay="150">
+        </p>
+    </div>
+    <div class="case-main-img-wrapper">
+        <noscript><img data-aos-anchor=".case-main__title" data-aos-duration="700" data-aos="fade-left" data-aos-delay="250" 
+            src="{% static 'images/adv_main2.png' %}" alt=""></noscript>
+        <img class="aos-init lazyloaded aos-animate" data-aos-anchor=".case-main__title" data-aos-duration="700" data-aos="fade-left" data-aos-delay="250" src="{% static 'images/adv_main2.png' %}" data-src="{% static 'images/adv_main2.png' %}" alt="">
+    </div>
+</div>
+
+{% comment %} sale container  {% endcomment %}
+    <div class="sale__container">
+        <img class="sale__container__img"
+        src="{% static 'images/sale_container_bg.png' %}" alt="">
+        <div class="sale__container__bg">
+        </div>
+        <div class="sale__container__title">
+            Дизайн в подарок при заказе сайта
+        </div>
+        <div class="nice_button sale__container__button">
+            <span>
+                Узнать больше
+            </span>
+        </div>
+    </div>
+{% comment %}  end sale container {% endcomment %}
+
+
+    {% comment %} benefits container {% endcomment %}
+    <div class="benefits__wrapper">
+        <div class="nice_title2 center">
+            <span>
+                Зачем нужна настройка рекламы
+            </span>
+        </div>
+        <div class="benefits">
+            <div class="benefits__image">
+                <img src="{% static 'images/adv_main3.png' %}" alt="">
+            </div>
+            <div class="benefits__items">
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Вас увидят в поисковиках, мобильных приложениях, YouTube, в ленте и сообществах Вконтакте
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Только целевая аудитория. Реклама будет показываться пользователям, которые ищут ваш товар или заинтересованы в нем.
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Постоянный рост эффективности. Каждый месяц мы анализируем результаты и перераспределяем бюджет в пользу работающих решений.
+                    </span>
+                </div>
+                <div class="benefits__items__item">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>
+                        Платите за результат. Вы платите только когда пользователь переходит на сайт или звонит вам.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} end benefits container {% endcomment %}
+
+
+    {% include './blocks/request_call.html' %}
+
+    {% include './blocks/serv_container.html' %}
+
+    {% include './blocks/contacts_container.html' %}
+    
+
+{% endblock content %}

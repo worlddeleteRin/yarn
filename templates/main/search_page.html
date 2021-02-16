@@ -1,0 +1,53 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+    <div class="main_wrapper1">
+    
+
+    <div class="desktop_menu_wrapper">
+    
+
+    {% include './blocks/desktop_menu_block.html' %}
+
+    <div class="main__content">
+
+    <div class="nice_title3 bold flex">
+        <span>
+            Поиск товаров по запросу: 
+            "
+            {{ search_query }}
+            "
+        </span>
+        {% comment %} <a class="nice_link green light"
+        href="{% url 'main:catalog' %}">
+            В каталог >
+        </a> {% endcomment %}
+    </div>
+
+
+    <div class="products_list">
+        {% for product in search_products  %}
+            {% include './blocks/product_cart.html' %}
+        {% endfor %}
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    {% comment %} {% include './blocks/intro_container.html' %} {% endcomment %}
+    
+    {% comment %} {% include './blocks/services.html' %} {% endcomment %}
+
+
+    {% comment %} <div id="services_anchor"></div> {% endcomment %}
+    {% comment %} {% include './blocks/serv_container.html' %} {% endcomment %}
+
+    {% comment %} {% include './blocks/contacts_container.html' %} {% endcomment %}
+
+    {% comment %} {% include './blocks/request_call.html' %} {% endcomment %}
+
+{% endblock content %}

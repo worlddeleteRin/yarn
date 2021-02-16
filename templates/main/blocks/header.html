@@ -1,0 +1,304 @@
+{% load static %}
+<div class="header_desktop">
+
+<div class="header_top">
+    <div class="header_top_content">
+        <div class="header_top_content__phones">
+            <span>
+                +38097xxxxxxx
+            </span>
+            <span>
+                +38097xxxxxxx
+            </span>
+        </div>
+        <div class="header_top_content__phones">
+            <span class="phone_call pointer">
+                Обратный звонок
+            </span>
+        </div>
+    </div>
+</div>
+<div class="header__main site_wrapper">
+    <a href="{% url 'main:index' %}"
+    class="header__logo">
+        <img src="{% static 'images/main_logo.jpeg' %}" alt="">
+    </a>
+    <div class="header__search">
+        <div class="header__search__container">
+            <form class="search_input_main_form">
+            <input type="text"
+            class="search_input_main"
+            placeholder="Поиск по магазину">
+            <input type="submit" style="display:none">
+            <span class="header_search_icon pointer
+            header_search_main_link">
+                <i class="fa fa-search
+                pointer"></i>
+            </span>
+            </form>
+        </div>
+    </div>
+    <div class="header__basket">
+        <span class="shopping_item">
+            <i class="fa fa-shopping-basket
+            pointer cart_button"></i>
+            <a class="shopping_counter">
+                <span class="shopping_counter_value">
+                    0
+                </span>
+            </a>
+            <!-- <div class="shopping_summary">
+                <span class="shopping_summary_value">
+                    0
+                </span>
+            </div> -->
+        </span>
+    </div>
+</div>
+
+
+<div class="header_menu">
+    <div class="header_menu_container">
+        <a href="{% url 'main:index' %}"
+        class="heade_menu_item">
+            главная
+        </a>
+        <a href="{% url 'main:catalog' %}"
+        class="heade_menu_item">
+            все товары
+        </a>
+        <a href="{% url 'main:about_us' %}"
+        class="heade_menu_item">
+            о нас
+        </a>
+        <a href="{% url 'main:contacts' %}"
+        class="heade_menu_item">
+            контакты
+        </a>
+        <a href="{% url 'main:delivery' %}"
+        class="heade_menu_item">
+            доставка и оплата
+        </a>
+        <a href="{% url 'main:return_policy' %}"
+        class="heade_menu_item">
+            возврат и обмен
+        </a>
+    </div>
+</div>
+
+</div>
+
+
+
+<!-- header mobile starts here -->
+<div class="header_mobile">
+
+    <div class="nice_title3 bold padding7">
+        <a class="nolink"
+        href="{% url 'main:index' %}">
+            Клубок - Интернет-магазин пряжи
+        </a>
+    </div>
+
+
+    <div class="header_mobile_main">
+        <div class="header_mobile_main__div start">
+            <div class="menu_icon mobile_menu_opener">
+                <i class="fa fa-bars mobile_menu_icon"></i>
+            </div>
+            <a href="tel:+79782215509"
+            class="call_phone_direct menu_icon nolink">
+                <i class="fa fa-phone-alt mobile_menu_icon"></i>
+                <span style="margin: 0 8;">Позвонить</span>
+            </a>
+        </div>
+        <div class="header_mobile_main__div end">
+            <div class="menu_icon">
+                <i class="fa fa-search mobile_menu_icon
+                mobile_search_trigger"></i>
+            </div>
+            <a href="{% url 'cart:index' %}"
+            class="menu_icon mobile_menu_basket">
+                <i class="fa fa-shopping-basket mobile_menu_icon"></i>
+                <span class="shopping_counter_value">
+                    0
+                </span>
+            </a>
+        </div>
+
+        <form class="mobile_search_form">
+        <div class="mobile__search__input">
+            <i class="fa fa-arrow-left mobile_search_close"></i>
+            <input type="text" class="mobile_search_input">
+            <i class="fa fa-search mobile__search__input__sbutton"></i>
+        </div>
+        </form>
+    </div>
+
+
+    <div class="header_mobile_menu">
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:index' %}">
+                Главная
+            </a>
+        </div>
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:catalog' %}">
+                Все товары
+            </a>
+        </div>
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:sale_products' %}">
+                Акции
+            </a>
+        </div>
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:new_products' %}">
+                Новинки
+            </a>
+        </div>
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:about_us' %}">
+                О нас
+            </a>
+        </div>
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:contacts' %}">
+                Контакты
+            </a>
+        </div>
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:delivery' %}">
+                Доставка и оплата
+            </a>
+        </div>
+        <div class="header_mobile_menu__item">
+            <a href="{% url 'main:return_policy' %}">
+                Возврат и обмен
+            </a>
+        </div>
+    </div>
+    <div class="header_mobile_menu__bg"></div>
+    <div class="header_mobile_search_bg"></div>
+    <i class=" fa fa-close
+    header_mobile_menu__close"></i>
+
+
+</div>
+
+
+<div class="search_container">
+    <div class="medium center pd5">
+        Результаты поиска по запросу:"
+        <span class="search_query_value semibold">
+        </span> "
+    </div>
+    
+    <div class="search_results_container">
+        {% include './search_results.html' %}
+    </div>
+</div>
+
+
+<script>
+    var sticky = new Waypoint.Sticky({
+    element: $('.header_menu'), // Add in your CSS selector sticky target
+    // direction: 'down right',
+  })
+    var sticky = new Waypoint.Sticky({
+    element: $('.header_mobile_main'), // Add in your CSS selector sticky target
+    // direction: 'down right',
+  })
+
+$('.mobile__search__input__sbutton').click(function() {
+    var s = $('.mobile_search_input').val()
+    if (s.length > 0) {
+        window.location.href = "{% url 'main:search_query'  %}?q=" + s
+    }
+})
+$('.mobile_search_form').submit(function(e) {
+    e.preventDefault()
+    var s = $('.mobile_search_input').val()
+    if (s.length > 0) {
+        window.location.href = "{% url 'main:search_query'  %}?q=" + s
+    }
+})
+$('.header_search_main_link').click(function() {
+    var s = $('.search_input_main').val()
+    if (s.length > 0) {
+        window.location.href = "{% url 'main:search_query'  %}?q=" + s
+    }
+}) 
+$('.search_input_main_form').submit(function(e) {
+    e.preventDefault()
+    var s = $('.search_input_main').val()
+    if (s.length > 0) {
+        window.location.href = "{% url 'main:search_query'  %}?q=" + s
+    }
+}) 
+
+
+    $('body').on('input', '.search_input_main', function() {
+        clearTimeout(this.delay);
+        this.delay = setTimeout(function(){
+            q = this.value
+            if (q.length > 0) {
+                $.ajax({
+                    url: "{% url 'main:search_query_ajax' %}",
+                    data: {
+                        'q': q, 
+                    }, success: function(data) {
+                        open_search_results()
+                        $('.search_query_value').html(q)
+                        $('.search_results_container').html(
+                            data
+                        )
+                    }
+                })
+            }
+        }.bind(this), 800);
+    });
+    $(".mobile_menu_opener").click(function() {
+        open_close_MobileMenu()
+    })
+    $(".header_mobile_menu__bg").click(function() {
+        open_close_MobileMenu()
+    })
+    $(".header_mobile_menu__close").click(function() {
+        open_close_MobileMenu()
+    })
+    $(".mobile_search_trigger").click(function() {
+        open_close_MobileSearch()
+    })
+    $(".header_mobile_search_bg").click(function() {
+        open_close_MobileSearch()
+    })
+    $(".mobile_search_close").click(function() {
+        open_close_MobileSearch()
+    })
+    $(".cart_button").click(function() {
+        window.location.href = "{% url 'cart:index' %}"
+    })
+    function open_close_MobileMenu() {
+        if ($(".header_mobile_main").hasClass('stuck')) {
+            $(".header_mobile_menu").addClass("top")  
+        } else {
+            $(".header_mobile_menu").removeClass("top")
+        }
+        $(".header_mobile_menu").toggleClass("show") 
+        $(".header_mobile_menu__bg").toggleClass("show") 
+        $(".header_mobile_menu__close").toggleClass("show") 
+        $("body").toggleClass("hidden") 
+    }
+    function open_close_MobileSearch() {
+        $(".header_mobile_search_bg").toggleClass("show");
+        $(".mobile__search__input").toggleClass("show");
+    }
+    function open_search_results() {
+        $('.search_container').addClass('show')
+    }
+    function close_search_results() {
+        $('.search_container').removeClass('show')
+    }
+    
+</script>

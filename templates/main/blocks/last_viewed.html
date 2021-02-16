@@ -1,0 +1,64 @@
+<div class="nice_title3">
+    <span>
+        Последние просмотренные
+    </span>
+</div>
+
+
+<div class="swiper-container pointer last_viewed_slider
+def_slider_setting">
+    <div class="swiper-wrapper">
+        {% for product in viewed_products %}
+            <div class="swiper-slide product_slide_item">
+            {% include './product_cart.html' %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev swiper_button"></div>
+    <div class="swiper-button-next swiper_button"></div> 
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        const swiper = new Swiper('.last_viewed_slider ', {
+    // Optional parameters
+    slidesPerView: 1,
+    spaceBetween: 10,
+    autoHeight: true,
+    breakpoints: {
+        580: {
+            slidesPerView: 2,
+        },
+        765: {
+            slidesPerView: 3,
+        },
+        1262: {
+            slidesPerView: 4,
+        },
+    },
+    direction: 'horizontal',
+    loop: false,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    // scrollbar: {
+    //   el: '.swiper-scrollbar',
+    // },
+  });
+    })
+</script>

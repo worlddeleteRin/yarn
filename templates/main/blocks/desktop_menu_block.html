@@ -1,0 +1,85 @@
+<div class="dmenu__block">
+    <div class="nice_title3 bold"
+    style="padding: 0 10;">
+        <a>
+            Меню
+        </a>
+    </div>
+    <div class="dmenu__block__content">
+        <div class="dmenu__block__item pointer">
+            <a href="{% url 'main:index' %}">
+                Главная 
+            </a>
+        </div>
+        <div class="dmenu__block__item pointer">
+            <a href="{% url 'main:sale_products' %}">
+                Акции 
+            </a>
+        </div>
+        <div class="dmenu__block__item pointer">
+            <a href="{% url 'main:new_products' %}">
+                Новинки 
+            </a>
+        </div>
+        <div class="dmenu__block__item pointer
+        dmenu__block__category__container_main">
+            <a href="{% url 'main:catalog' %}">
+                Каталог товаров
+            </a>
+            <i class="fa fa-plus
+            dmenu__block__item__trigger"
+            data-trigger="dmenu__block__category__container_main"></i>
+        </div>
+        <div class="dmenu__block__category__container
+        dmenu__block__category__container_main"
+        id="">
+            {% for category in categories  %}
+                <div class="dmenu__block__item pointer
+                dmenu__block__category__container-{{category.id}}">
+                    <a href="{% url 'main:category' category.id %}">
+                        {{ category.name }}
+                    </a>
+                    <i class="fa fa-plus
+                    dmenu__block__item__trigger"
+                    data-trigger="dmenu__block__category__container-{{category.id}}">
+                    </i>
+                </div>
+                <div class="dmenu__block__category__container
+                dmenu__block__category__container-{{category.id}}" 
+                id="">
+                    {% for subcategory in category.subcategory_set.all %}
+                        <div class="dmenu__block__item pointer
+                        dmenu__block__category__container_sub-{{subcategory.id}}">
+                            <a href="{% url 'main:subcategory' category.id subcategory.id %}">
+                                {{ subcategory.name }}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="dmenu__block__item pointer">
+            <a href="{% url 'main:contacts' %}">
+                Контакты
+            </a>
+        </div>
+        <div class="dmenu__block__item pointer">
+            <a href="{% url 'main:delivery' %}">
+                Доставка и оплата
+            </a>
+        </div>
+        <div class="dmenu__block__item pointer">
+            <a href="{% url 'main:return_policy' %}">
+                Возврат и обмен
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+$(".dmenu__block__item__trigger").click(function() {
+    var attr = $(this).attr('data-trigger')
+    //$(this).parent().toggleClass('active')
+    $('.'+attr).toggleClass('active')
+})
+</script>

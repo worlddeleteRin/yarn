@@ -1,0 +1,219 @@
+{% load static %}
+<div class="case-main dark case-main-top">
+    <div class="case-main-text">
+        <h3 class="case-main__title case-f aos-init aos-animate" data-aos="fade-down">
+            {% block intro__container__title %}
+              Делаем ваш бизнес еще лучше
+            {% endblock intro__container__title %}
+        </h3>
+        <div class="case-main__subtitle">
+            Разработка, поддержка, реклама.
+        </div>
+        <p class="case-main__desc aos-init aos-animate" data-aos="fade-down" data-aos-delay="150">
+        </p>
+    </div>
+    <div class="case-main-img-wrapper">
+        <noscript><img data-aos-anchor=".case-main__title" data-aos-duration="700" data-aos="fade-left" data-aos-delay="250" 
+            src="{% static 'images/main_banner.png' %}" alt=""></noscript>
+        <img class="aos-init lazyloaded aos-animate" data-aos-anchor=".case-main__title" data-aos-duration="700" data-aos="fade-left" data-aos-delay="250" src="{% static 'images/main_banner.png' %}" data-src="{% static 'images/main_banner.png' %}" alt="">
+    </div>
+</div>
+
+
+<script>
+    $.fn.extend({
+  anican: function(i) {
+    
+    //defaults
+    let config = {
+      background: "#111",
+      size: 20,
+      speed: 0.5,
+      zindex: 0,
+      max: 50,
+      colors: [
+        "#2980B9",
+        "#F14155",
+        "#27AE60",
+        "#FBA026"
+      ]
+    };
+    
+    try{
+      //check defaults
+      for (let key in config) {
+        if(!i[key]){
+          i[key] = config[key];
+        }
+      }
+      
+      //build frame
+      $(this).prepend(
+        $("<canvas />")
+          .addClass("anican")
+          .css({
+            "display": "transparent",
+            "background": "none",
+            "position": "fixed",
+            "left": 0,
+            "top": 0,
+            "overflow": "hidden",
+            "z-index": i.zindex,
+            "pointer-events": "none",
+          })
+      );
+    } catch(e){
+      if(e){ return console.log(e)}
+    }
+    
+
+    let canvas = $(".anican")[0],
+    context = canvas.getContext("2d"),
+    Dots = [],
+    colors = i.colors,
+    maximum = i.max;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function Initialize() {
+      GenerateDots();
+      Update();
+    }
+
+    function Dot() {
+       try{
+        this.active = true;
+        this.diameter = Math.random() * i.size;
+        this.x = Math.round(Math.random() * canvas.width);
+        this.y = Math.round(Math.random() * canvas.height);
+        this.velocity = {
+          x: (Math.random() < 0.5 ? -1 : 1) * Math.random() * i.speed,
+          y: (Math.random() < 0.5 ? -1 : 1) * Math.random() * i.speed
+        };
+        this.alpha = 0.1;
+        this.hex = colors[Math.round(Math.random() * 3)];
+        this.color = HexToRGBA(this.hex, this.alpha);
+      } catch(e){
+        if (e) {return console.log(e)}
+      }
+    }
+
+    Dot.prototype = {
+      Update: function() {
+        try{
+          if (this.alpha < 0.8) {
+            this.alpha += 0.01;
+            this.color = HexToRGBA(this.hex, this.alpha);
+          }
+
+          this.x += this.velocity.x;
+          this.y += this.velocity.y;
+
+          if (
+            this.x > canvas.width + 5 ||
+            this.x < 0 - 5 ||
+            this.y > canvas.height + 5 ||
+            this.y < 0 - 5
+          ) {
+            this.active = false;
+          }
+        } catch(e){
+          if (e) {return console.log(e)}
+        }
+      },
+      Draw: function() {
+        try{
+          context.fillStyle = this.color;
+          context.beginPath();
+          context.arc(this.x, this.y, this.diameter, 0, Math.PI * 2, false);
+          context.fill();
+        } catch(e){
+          if (e) {return console.log(e)}
+        }
+      }
+    };
+
+    function Update() {
+      GenerateDots();
+      Dots.forEach(function(Dot) {
+        Dot.Update();
+      });
+      Dots = Dots.filter(function(Dot) {
+        return Dot.active;
+      });
+      Render();
+      requestAnimationFrame(Update);
+    }
+
+    function Render() {
+      try{
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        Dots.forEach(function(Dot) {
+          Dot.Draw();
+        });
+      } catch(e){
+        if(e) { return console.log(e)}
+      }
+    }
+
+    function GenerateDots() {
+      try {
+        if (Dots.length < maximum) {
+          for (var i = Dots.length; i < maximum; i++) {
+            Dots.push(new Dot());
+          }
+        }
+        return false;
+      } catch (e) {
+        if(e){ return console.log(e)}
+      }
+    }
+
+    function HexToRGBA(hex, alpha) {
+      try{
+        let red = parseInt(TrimHex(hex).substring(0, 2), 16),
+        green = parseInt(TrimHex(hex).substring(2, 4), 16),
+        blue = parseInt(TrimHex(hex).substring(4, 6), 16);
+        return "rgba(" + red + ", " + green + ", " + blue + ", " + alpha + ")";
+      } catch(e){
+        if(e){return console.log(e)}
+      }
+    }
+
+    function TrimHex(hex) {
+      try {
+        let res = hex.charAt(0) === "#" ? hex.substring(1, 7) : h;
+        return res;
+      } catch (e) {
+        if(e){return console.log(e)}
+      }
+    }
+
+    $(window).on("resize", function() {
+        Dots = [];
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    
+    return Initialize();
+  }
+});
+
+//call plugin
+$(".case-main-top").anican({
+  //optional defaults
+//   background: none,
+  colors: [
+    "#2980B9",
+    "#F14155",
+    "#27AE60",
+    "#FBA026"
+   ],
+  zindex: 1,
+  max: 50,
+  size: 2,
+  speed: 0.6,
+});
+
+</script>

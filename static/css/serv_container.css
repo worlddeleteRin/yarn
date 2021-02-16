@@ -1,0 +1,110 @@
+.serv_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.serv_container_item {
+  position: relative;
+  overflow: hidden;
+  width: 33%;
+  height: 600px;
+  -webkit-transition: width 0.2s ease-out;
+  transition: width 0.2s ease-out;
+}
+
+@media (min-width: 991px) {
+  .serv_container_item.hover {
+    width: 50%;
+  }
+  .serv_container_item.hover .serv_container_item__info__desc {
+    visibility: visible;
+    left: 20;
+  }
+  .serv_container_item.hover .serv_container_item__image {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  .serv_container_item.hover .serv_container_item__bg {
+    opacity: 0.92;
+  }
+}
+
+.serv_container_item__bg {
+  opacity: 0;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.serv_container_item__image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+  z-index: 0;
+}
+
+.serv_container_item__info {
+  padding: 40 30;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.serv_container_item__info__title {
+  font-size: calc(15px + 1.4vw);
+  font-family: 'main_ebold';
+}
+
+.serv_container_item__info__desc {
+  margin-top: 30px;
+  position: absolute;
+  left: -900px;
+  font-size: calc(10px + 0.4vw);
+  font-family: 'main_regular';
+  padding: 40 0;
+  width: 80%;
+  overflow: hidden;
+  -webkit-transition: left 0.2s;
+  transition: left 0.2s;
+}
+
+.serv_container_item__info__button {
+  padding-top: 90px;
+}
+
+@media (max-width: 991px) {
+  .serv_container {
+    display: block;
+  }
+  .serv_container_item {
+    height: calc(300px + 2vw);
+    width: 100%;
+  }
+  .serv_container_item__info__desc {
+    visibility: visible;
+    left: 20;
+  }
+  .serv_container_item__bg {
+    opacity: 0.92;
+  }
+  .serv_container_item__info__button {
+    padding-top: 60;
+  }
+}
+/*# sourceMappingURL=serv_container.css.map */

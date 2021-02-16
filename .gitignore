@@ -1,3 +1,4 @@
-yarn/settings.py
-.DS_Store
-.db.sqlite3
+./yarn/settings.py
+./.DS_Store
+./db.sqlite3
+./.vscode

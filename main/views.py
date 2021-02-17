@@ -9,6 +9,8 @@ import json
 from django.template.loader import render_to_string
 from datetime import datetime
 from cart.models import Cart
+from django.core.mail import send_mail
+from django.conf import settings
 # from .telegrambot import *
 
 # Create your views here.
@@ -214,3 +216,25 @@ def search_query(request):
         'search_query': main_query,
     }
     return render(request, template, context)
+
+def call_request_ajax(request): 
+    phone = request.GET['call_phone']
+    # try:
+    contact_context = {
+        'phone': phone,
+    }
+    call_request_template = render_to_string('main/blocks/call_request.html', contact_context)
+    send_mail(
+        'Заявка на обратный звонок!',
+        call_request_template,
+        settings.EMAIL_HOST_USER,
+        [
+            'worlddelete0@yandex.ru', 
+        ],
+        html_message=call_request_template,
+        )
+    # except:
+    #     pass
+    return JsonResponse({
+        'is_sent': True,
+    }, status = 200)

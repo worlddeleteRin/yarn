@@ -16,6 +16,7 @@ urlpatterns = [
     path('new_products', views.new_products, name = 'new_products'),
     path('search_query_ajax', views.search_query_ajax, name = 'search_query_ajax'),
     path('search_query', views.search_query, name = 'search_query'),
+    path('call_request_ajax', views.call_request_ajax, name = 'call_request_ajax'),
     path('product/<int:product_id>', views.product, name = 'product'),
     path('category/<int:category_id>', views.category, name = 'category'),
     path('product/<int:category_id>/<int:subcategory_id>', views.subcategory, name = 'subcategory'),

@@ -494,7 +494,7 @@
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 859px) {
     .benefits {
         padding-top: calc(1px + 1vw);
         flex-direction: column;
@@ -645,8 +645,7 @@ body.hidden {
 .header_desktop {
     display: block;
 }
-@media (max-width: 991px) {
-    
+@media (max-width: 859px) {
     .header_desktop {
         display: none;
     }

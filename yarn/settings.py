@@ -141,6 +141,14 @@ VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
 
 
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "worlddelete0@mail.ru"
+EMAIL_HOST_PASSWORD = "Worldhack0Rin"
+EMAIL_USE_TLS = True
+
+
 # make Django use https 
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Клубок - Интернет-магазин пряжи
+        Клубочок - Интернет-магазин пряжи
     </title>
 </head>
 <body>
@@ -148,51 +148,16 @@ function updateCartTotal() {
 }
   
 function sendCall(call_type) {
-    console.log('button is clicked')
-    console.log(call_type)
-    if (call_type == 'project') {
-        var call_name = $("input[name='call_name']").val()
-        var call_phone = $("input[name='call_phone']").val()
-        var call_mail = $("input[name='call_mail']").val()
-        var call_about = $("input[name='call_about']").val()
-        $.ajax({
-            url: 'google.com',
-            data: {
-                'call_type': call_type,
-                'call_name': call_name,
-                'call_phone': call_phone,
-                'call_mail': call_mail,
-                'call_about': call_about,
-            }, success: function(data) {
-                openThankPopup()
-            }
-        });
-    }
-    if (call_type == 'phone_only') {
-        var call_phone = $("input[name='call_phone2']").val()
-        $.ajax({
-            url: 'google.com',
-            data: {
-                'call_type': call_type,
-                'call_phone': call_phone,
-            }, success: function(data) {
-                openThankPopup()
-            }
-        });
-    }
-    if (call_type == 'popup_phone') {
-        var call_phone = $("input[name='call_phone3']").val()
-        $.ajax({
-            url: 'google.com',
-            data: {
-                'call_type': 'phone_only',
-                'call_phone': call_phone,
-            }, success: function(data) {
-                closeContactPopup()
-                openThankPopup()
-            }
-        });
-    }
+    var call_phone = $("input[name='call_phone3']").val()
+    $.ajax({
+        url: "{% url 'main:call_request_ajax' %}",
+        data: {
+            'call_phone': call_phone,
+        }, success: function(data) {
+            closeContactPopup()
+            openThankPopup()
+        }
+    });
 }
 
 function checkForm(call_type) {
